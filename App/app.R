@@ -501,7 +501,15 @@ server <- shinyServer(function(input, output) {
   # 2.1.1 text1 ** **  ** ** ** RENDER text1 -----
   
   output$text1 <- renderText({
-    "Upload your data in a comma separated values (CSV) file by clicking on the 'Browse' button in the left sidebar panel. Please refer to the image below. Your CSV file should contain only two columns. The blood glucose monitor (BGM) readings should be in the leftmost column under the heading 'BGM'. These are the meter readings or point-of-care readings. The reference values should be in the next column under the label 'REF'. Reference values might come from simultaneously obtained plasma specimens run on a laboratory analyzer such as the YSI Life Sciences 2300 Stat Plus Glucose Lactate Analyzer. If you have any questions about how your CSV data file should look before uploading it, please download the sample data set we have provided."
+    "Upload your data in a comma separated values (CSV) file by clicking on the 'Browse' button in the left sidebar panel. 
+    Please refer to the image below. Your CSV file should contain only two columns. The blood glucose monitor (BGM) readings 
+    should be in the leftmost column under the heading 'BGM'. These are the meter readings or point-of-care readings. The reference
+    values should be in the next column under the label 'REF'. Reference values might come from simultaneously obtained plasma 
+    specimens run on a laboratory analyzer such as the YSI Life Sciences 2300 Stat Plus Glucose Lactate Analyzer. 
+    All glucose concentrations should be in mg/dL and rounded to the nearest integer.  
+    If you have any questions about how your CSV data file should look before uploading it, please download the sample data set we 
+    have provided.  
+    Again, all glucose concentrations should be in mg/dL and rounded to the nearest integer."
   })
 
   # 2.1.3 text2 ** **  ** ** ** RENDER text2 -----
