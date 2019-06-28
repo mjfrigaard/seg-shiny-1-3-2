@@ -2,7 +2,7 @@
 # This is code to create: The SEG Shiny app
 # Authored by and feedback to mjfrigaard@gmail.com
 # MIT License
-# Version: 1.3.1 ----
+# Version: 1.3.2 ----
 # =====================================================================#
 # This is a Shiny web application. You can run the application by clicking
 # the 'Run App' button above.
@@ -240,18 +240,14 @@ h6("Questions? Email support@quesgen.com")
         
         h5(textOutput(outputId = "text1")),
         
-        #  "Upload your data in a comma separated values (CSV) file by clicking 
-        #  on the 'Browse' button in the left sidebar panel. Please refer to 
-        #  the image below. Your CSV file should contain only two columns. The 
-        #  blood glucose monitor (BGM) readings should be in the leftmost column
-        #  under the heading 'BGM'. These are the meter readings or 
-        #  point-of-care readings. The reference values should be in the next 
-        #  column under the label 'REF'. Reference values might come from 
-        #  simultaneously obtained plasma specimens run on a laboratory 
-        #  analyzer such as the YSI Life Sciences 2300 Stat Plus Glucose 
-        #  Lactate Analyzer. If you have any questions about how your CSV data
-        #  file should look before uploading it, please download the sample 
-        #  data set we have provided."
+        #  "Upload your data in a comma separated values (CSV) file by clicking on the 'Browse' button in the left sidebar panel. 
+        # Please refer to the image below. Your CSV file should contain only two columns. The blood glucose monitor (BGM) readings 
+        # should be in the leftmost column under the heading 'BGM'. These are the meter readings or point-of-care readings. The reference
+        # values should be in the next column under the label 'REF'. Reference values might come from simultaneously obtained plasma 
+        # specimens run on a laboratory analyzer such as the YSI Life Sciences 2300 Stat Plus Glucose Lactate Analyzer. 
+        # All glucose concentrations should be in mg/dL and rounded to the nearest integer.  
+        # If you have any questions about how your CSV data file should look before uploading it, please download the sample data set we 
+        # have provided. **Again, all glucose concentrations should be in mg/dL and rounded to the nearest integer.**."
 
         # 2.1.2 < INSTRUCTIONS PANEL > (save_as_csv.png IMAGE) ----
             # add some space
@@ -508,8 +504,7 @@ server <- shinyServer(function(input, output) {
     specimens run on a laboratory analyzer such as the YSI Life Sciences 2300 Stat Plus Glucose Lactate Analyzer. 
     All glucose concentrations should be in mg/dL and rounded to the nearest integer.  
     If you have any questions about how your CSV data file should look before uploading it, please download the sample data set we 
-    have provided.  
-    Again, all glucose concentrations should be in mg/dL and rounded to the nearest integer."
+    have provided. **Again, all glucose concentrations should be in mg/dL and rounded to the nearest integer.**"
   })
 
   # 2.1.3 text2 ** **  ** ** ** RENDER text2 -----
