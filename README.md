@@ -1,7 +1,7 @@
-SEG Shiny Heatmap (version 1.3.1)
+SEG Shiny Heatmap (version 1.3.2)
 ================
 Martin Frigaard
-2019-01-03
+2019-06-29
 
 # Welcome to the SEG Shiny app project page
 
@@ -9,94 +9,52 @@ This page outlines the code used to develop the SEG application. The
 working version is on the Diabetes Technology Society website
 [here](https://www.diabetestechnology.org/seg/). The preview version
 (not necessarily stable) is available
-[here](https://n3wsandnumb3rs.shinyapps.io/seg-shiny-v-1-3-1/).
+[here](https://paradigmdatagroup.shinyapps.io/seg-shiny-v-1-3-1/).
 
 For questions, issues, or feature requests, please email Martin at
-<martin@newsandnumbers.org>.
+<support@quesgen.com>.
 
 **HEADER:**
 
-  - **Created date:** 2019-01-03
+  - **Created date:** 2019-06-29
 
-  - **R version:** R version 3.5.1 (2018-07-02)
+  - **R version:** R version 3.6.0 (2019-04-26)
 
 # Previous Issues
 
-**The issues/bugs/fixes for the application version 1.3.1**:
+**The issues/bugs/fixes for the application version 1.3.2**:
 
-1.  In the 5-category summary table, there is a column labelled `REF
-    Range`. It should be `Risk Factor Range`.
+1.  The instructions text has been changed to include a statement about
+    rounding to the nearest integer:
 
-2.  The heatmap-style background needs to be smoothed (with supplied
-    Gaussian smoothed image.)
+> All glucose concentrations should be in mg/dL and rounded to the
+> nearest integer. If you have any questions about how your CSV data
+> file should look before uploading it, please download the sample data
+> set we have provided. **Again, all glucose concentrations should be in
+> mg/dL and rounded to the nearest integer.**
 
-3.  The order of the entries in the Summary Table should be changed to
-    have the order below:
+2.  The SEG heatmap we giving the following error,
 
-<!-- end list -->
+> An error has occurred. Check your logs or contact the app author for
+> clarification.
 
-    Total
-    BGM < REF
-    BGM = REF
-    BGM > REF
-    REF > 600 : Excluded from SEG Analysis
-    Total Included in SEG Analysis
+This was addressed in version 1.3.2 by adding the smoothed gaussian
+layer (`seg_gaussian_layer_shiny.rds`) to the App folder and having it
+uploaded into the Shiny server.
 
-4.  The downloadable SEG plots need to be square:
-
-*We would also like the SEG graphs to always be perfectly square (in the
-SEG tab they are much wider than they are tall, and in the downloaded
-graphics they are still slightly wider).*
-
-# Download the source data files, code, etc.
-
-This was downloaded using
-git:
-
-``` bash
-Martins-MacBook-Pro:SEG1.3.1 martinfrigaard$ git clone https://github.com/quesgen/SEG.1.3.git
-Cloning into 'SEG.1.3'...
-remote: Enumerating objects: 267, done.
-remote: Counting objects: 100% (267/267), done.
-remote: Compressing objects: 100% (233/233), done.
-Receiving objects: 100% (267/267), 13.57 MiB | 16.31 MiB/s, done.
-remote: Total 267 (delta 18), reused 264 (delta 18), pack-reused 0
-Resolving deltas: 100% (18/18), done.
-```
-
-This folder contains the following folders and files.
-
-``` bash
-SEG1.3
-├── App
-│   ├── App.Rproj
-│   ├── AppLookUpRiskCat.csv
-│   ├── AppRiskPairData.csv
-│   ├── AppSampleDataFile.csv
-│   ├── README.Rmd
-│   ├── README.md
-│   ├── TASKLOG.md
-│   ├── app.R
-│   ├── downloadSampleData.csv
-│   ├── helpers.R
-│   └── www
-│       ├── QuesGenLogo.png
-│       ├── RStudio-Logo-Blue-Gray.png
-│       ├── dts_logo.jpg
-│       ├── heat_map_1.0.png
-│       ├── heatmap_logo.png
-│       ├── save_as_csv.png
-│       ├── shiny.png
-│       ├── tbd.jpg
-│       └── tbd2.jpg
-├── Code
-├── Data
-├── Image
-├── README.Rmd
-├── README.md
-├── README_files
-├── SEG1.3.Rproj
-```
+    App
+    ├── App.Rproj
+    ├── AppLookUpRiskCat.csv
+    ├── AppRiskPairData.csv
+    ├── AppSampleDataFile.csv
+    ├── BackgroundSmooth.png
+    ├── TASKLOG.md
+    ├── app.R
+    ├── downloadSampleData.csv
+    ├── helpers.R
+    ├── rsconnect
+    ├── seg_gaussian_layer_shiny.rds
+    └── www
 
 **The `SEG.1.3/App` folder**
 
@@ -104,28 +62,117 @@ SEG1.3
     `app.R` is the actual application, while `helpers.R` has additional
     necessary functions for wrangling, etc.
 
+<!-- end list -->
+
+    App
+    ├── App.Rproj
+    ├── AppLookUpRiskCat.csv
+    ├── AppRiskPairData.csv
+    ├── AppSampleDataFile.csv
+    ├── BackgroundSmooth.png
+    ├── TASKLOG.md
+    ├── app.R
+    ├── downloadSampleData.csv
+    ├── helpers.R
+    ├── rsconnect
+    │   └── shinyapps.io
+    │       ├── n3wsandnumb3rs
+    │       │   └── seg-shiny-v-1-3-1.dcf
+    │       └── quesgen
+    │           └── seg-shiny-v-1-3-1.dcf
+    ├── seg_gaussian_layer_shiny.rds
+    └── www
+        ├── QuesGenLogo.png
+        ├── RStudio-Logo-Blue-Gray.png
+        ├── dts_logo.jpg
+        ├── heat_map_1.0.png
+        ├── heat_map_2.0.png
+        ├── heatmap_logo.png
+        ├── save-as-csv.png
+        ├── shiny.png
+        ├── tbd.jpg
+        └── tbd2.jpg
+
 **The `SEG.1.3/Code` folder**
 
   - This folder contains previous versions, functions, and individual
     application elements.
+
+<!-- end list -->
+
+    Code
+    └── app-v1.3.R
 
 **The `SEG.1.3/Data` folder**
 
   - This contains the data for the application. Most of these data files
     are downloaded from the `SEG_shiny` repository
     [here](https://github.com/mjfrigaard/SEG_shiny/). This was changed
-    in version 1.3.1 to [this
+    in version 1.3.2 to [this
     repository](https://github.com/mjfrigaard/seg-shiny-data) because
     the name is more accurate.
+
+<!-- end list -->
+
+    Data
+    ├── No_Interference_Dogs.csv
+    ├── lkpRiskGrade.csv
+    ├── lkpSEGRiskCat4.csv
+    └── seg_gaussian_layer_shiny.rds
 
 **The `SEG.1.3/Image` folder**
 
   - These are the images for the `README.Rmd`, the application, and
     other example outputs.
 
+<!-- end list -->
+
+    Image
+    ├── BackgroundComplete.png
+    ├── BackgroundSmooth.png
+    ├── complete-save-as-csv.png
+    ├── dts-seg-plot-gaussian.png
+    ├── dts-seg-plot-ggplot2.png
+    ├── heat_map_1.1.png
+    ├── heat_map_2.0.png
+    ├── modba_plot-pdf-1.3.1.pdf
+    ├── modba_plot-png-1.3.1.png
+    ├── save-as-csv-2.jpg
+    ├── save-as-csv-3.png
+    ├── save-as-csv-4.png
+    ├── save-as-csv.png
+    ├── save-as-csv.xml
+    ├── seg-1.3.1-pdf-output.pdf
+    ├── seg-1.3.1-png-output.png
+    ├── seg600.png
+    ├── test-segTable-function-1.png
+    └── test-segTable.png
+
 **The `SEG.1.3/README_files` folder**
 
   - Files generated from `README.Rmd`
+
+<!-- end list -->
+
+    README_files
+    └── figure-gfm
+        ├── add-sample-data-to-seg_gaussian_layer_shiny-1.png
+        ├── background_smooth_layer-1.png
+        ├── base_layer-1.png
+        ├── check-seg_gaussian_layer_shiny-1.png
+        ├── gaussian-base_layer-1.png
+        ├── gaussian_layer-1.png
+        ├── heatmap-version-1-1.png
+        ├── heatmap_plot-1.png
+        ├── points_layer_1-REMOVED-1.png
+        ├── print-seg_gaussian_layer_shiny-1.png
+        ├── render-heat_map_2.0-1.png
+        ├── scale_fill_gradientn_layer_1-1.png
+        ├── scale_fill_gradientn_layer_2-REMOVED-1.png
+        ├── seg_gaussian_layer_shiny-1-3-1-1.png
+        ├── seg_gaussian_layer_shiny-1.png
+        ├── x_axis_scale-1.png
+        └── y_axis_scale-1.png
 
 -----
 
@@ -368,8 +415,7 @@ knitr::include_graphics("image/heat_map_2.0.png")
 
 I’ll upload the .csv data from Vanderbilt. I have all the data in a
 Github repo, so I can load all the Vanderbilt data below after defining
-the path to the `Data/`
-folder.
+the path to the `Data/` folder.
 
 ``` r
 github_data_root <- "https://raw.githubusercontent.com/mjfrigaard/seg-shiny-data/master/Data/"
@@ -499,8 +545,7 @@ The summary tables are all calculated on tab 2. These tables have a
 variety of text sections that describes the calculation and the
 interpretation.
 
-These require a variety of data inputs I load here from
-Github.
+These require a variety of data inputs I load here from Github.
 
 ``` r
 RiskPairData <- readr::read_csv(paste0(github_data_root, "AppRiskPairData.csv"))
@@ -575,8 +620,7 @@ The text for this section is below:
 
 ## The PairTypeTable1 table in the SERVER
 
-This is the portion of the
-data
+This is the portion of the data
 
 ``` r
 # 2.2.2 <SUMMARY TAB> RENDER PairTypeTable1 TABLE ---- ---- ---- ---- this
@@ -595,8 +639,7 @@ output$PairTypeTable1 <- renderTable({
 ```
 
 This table lists the pair types for each `REF` and `BGM` value pair. The
-previous version is
-below:
+previous version is below:
 
 ``` r
 PairType1.3 <- tibble::tribble(~Pair.Type, ~Count, "REF <21: Included in SEG Analysis", 
@@ -627,14 +670,13 @@ The new version needs to list these values in the following order:
     Total Included in SEG Analysis
 
 With the `VanderbiltComplete.csv` data, this table will have the
-following
-order/counts.
+following order/counts.
 
 ``` r
-PairType1.3.1 <- tibble::tribble(~`Pair Type`, ~Count, "Total", 9891L, "BGM < REF", 
+PairType1.3.2 <- tibble::tribble(~`Pair Type`, ~Count, "Total", 9891L, "BGM < REF", 
     4710L, "BGM = REF", 479L, "BGM > REF", 4702L, "REF > 600: Excluded from SEG Analysis", 
     23L, "Total included in SEG Analysis", 9868L)
-PairType1.3.1
+PairType1.3.2
 ```
 
     # A tibble: 6 x 2
@@ -649,7 +691,7 @@ PairType1.3.1
 
 This table is created with the `pairtypeTable()` function.
 
-### The pairtypeTable() function version 1.3.1
+### The pairtypeTable() function version 1.3.2
 
 I’ve made a few revisions to this function so the rows/counts come out
 in the requested order.
@@ -703,8 +745,7 @@ pairtypeTable(dat = paste0(github_data_root, "VanderbiltComplete.csv"))
     5 REF > 600: Excluded from SEG Analysis    23
     6 Total included in SEG Analysis         9868
 
-I will also test it with the dataset of 188
-points.
+I will also test it with the dataset of 188 points.
 
 ``` r
 pairtypeTable(dat = paste0(github_data_root, "No_Interference_Dogs.csv"))
@@ -725,8 +766,7 @@ This works. Adding to the `helpers.R` file.
 ### The MARDTable2 table in the UI
 
 This is the `MARDTable2` portion in the `UI`. It is preceded by a few
-text inputs that describe the acronyms and
-calculations.
+text inputs that describe the acronyms and calculations.
 
 ``` r
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1017,8 +1057,7 @@ MARDTable2
 
 ### The RiskGradeTable3 in the UI
 
-The code to define the `RiskGradeTable3` table in the UI is
-below.
+The code to define the `RiskGradeTable3` table in the UI is below.
 
 ``` r
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1097,8 +1136,7 @@ I can test this with the new and improved `segTable()` function, but
 this requires loading the `lkpRiskGrade`, `LookUpRiskCat`, and
 `RiskPairData` tables from GitHub. The function in the app uses a
 simulated reactive data set. The `datasetSEG` will serve as my
-‘reactive’ data
-set.
+‘reactive’ data set.
 
 ``` r
 datasetSEG <- segTable(paste0(github_data_root, "VanderbiltComplete.csv"))
@@ -1191,8 +1229,7 @@ The text for this section is below:
 
 ### The SEGRiskCategoryTable4 in the UI
 
-The code to define the `SEGRiskCategoryTable4` is
-below.
+The code to define the `SEGRiskCategoryTable4` is below.
 
 ``` r
         # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1211,8 +1248,7 @@ below.
 
 ### The SEGRiskCategoryTable4 in the SERVER
 
-The code to define the `SEGRiskCategoryTable4` is
-below.
+The code to define the `SEGRiskCategoryTable4` is below.
 
 ``` r
 # 2.2.6 <SUMMARY TAB> RENDER [SEGRiskCategoryTable4] TABLE ---- ---- ----
@@ -1670,7 +1706,7 @@ heatmap_plot
 
 ![](README_files/figure-gfm/heatmap-version-1-1.png)<!-- -->
 
-### New data/image inputs for SEG plot 1.3.1
+### New data/image inputs for SEG plot 1.3.2
 
 In order to build the new plot with the Gaussian smoothed background, a
 new image `seg600.png` needs to be uploaded as a layer.
@@ -1798,13 +1834,56 @@ seg_gaussian_layer_shiny <- gaussian_layer +
       "extreme"
     ),
     name = "risk level")
-seg_gaussian_layer_shiny
 ```
-
-![](README_files/figure-gfm/seg_gaussian_layer_shiny-1.png)<!-- -->
 
 In the final layer, I’ll add the sample data to the
 `seg_gaussian_layer_shiny` plot.
+
+``` r
+seg_gaussian_layer_shiny
+```
+
+![](README_files/figure-gfm/print-seg_gaussian_layer_shiny-1.png)<!-- -->
+
+For quicker plotting and loading, I will export the
+`seg_gaussian_layer_shiny` object into the App folder so it’s uploaded
+into the application and shiny server.
+
+``` r
+readr::write_rds(x = seg_gaussian_layer_shiny, path = "App/seg_gaussian_layer_shiny.rds")
+fs::dir_tree("App")
+```
+
+    App
+    ├── App.Rproj
+    ├── AppLookUpRiskCat.csv
+    ├── AppRiskPairData.csv
+    ├── AppSampleDataFile.csv
+    ├── BackgroundSmooth.png
+    ├── TASKLOG.md
+    ├── app.R
+    ├── downloadSampleData.csv
+    ├── helpers.R
+    ├── rsconnect
+    │   └── shinyapps.io
+    │       ├── n3wsandnumb3rs
+    │       │   └── seg-shiny-v-1-3-1.dcf
+    │       └── quesgen
+    │           └── seg-shiny-v-1-3-1.dcf
+    ├── seg_gaussian_layer_shiny.rds
+    └── www
+        ├── QuesGenLogo.png
+        ├── RStudio-Logo-Blue-Gray.png
+        ├── dts_logo.jpg
+        ├── heat_map_1.0.png
+        ├── heat_map_2.0.png
+        ├── heatmap_logo.png
+        ├── save-as-csv.png
+        ├── shiny.png
+        ├── tbd.jpg
+        └── tbd2.jpg
+
+Now we can test this with the `SampMeasData` file.
 
 ``` r
 heatmap_plot <- seg_gaussian_layer_shiny +
@@ -1825,29 +1904,14 @@ heatmap_plot
 
 ![](README_files/figure-gfm/heatmap_plot-1.png)<!-- -->
 
-For quicker plotting and loading, I will export the
-`seg_gaussian_layer_shiny` object and load it into the `helpers.R`
-file.
-
-``` r
-readr::write_rds(x = seg_gaussian_layer_shiny, path = "Data/seg_gaussian_layer_shiny.rds", 
-    compress = "gz")
-```
-
-This was uploaded to the [shiny data
-repo](https://github.com/mjfrigaard/seg-shiny-data),
-
 Just to make sure this works, I will remove this object and build the
 SEG plot like I would in the Shiny application.
 
 ``` r
 # remove seg_gaussian_layer_shiny
 rm(seg_gaussian_layer_shiny)
-# now download web version to test
-download.file(url = paste0(github_data_root, "seg_gaussian_layer_shiny.rds"), 
-    destfile = "Data/seg_gaussian_layer_shiny.rds")
 # import rds file
-seg_gaussian_layer_shiny <- readr::read_rds("Data/seg_gaussian_layer_shiny.rds")
+seg_gaussian_layer_shiny <- readr::read_rds("App/seg_gaussian_layer_shiny.rds")
 ```
 
 ``` r
@@ -1872,10 +1936,10 @@ heat_map_2.0
 This works and loads much faster–I added the compressed
 `seg_gaussian_layer_shiny` file to the github repo and `helpers.R` file.
 
-### SEG graph version 1.3.1 (shiny)
+### SEG graph version 1.3.2 (shiny)
 
 This is the version that goes into the Shiny application in version
-1.3.1
+1.3.2
 
 ``` r
   # 6.0 <SEG TAB> RENDER SEG [heatmap_plot] ----- ----- -----
@@ -1911,7 +1975,7 @@ This is the version that goes into the Shiny application in version
 
 ### The modified Bland-Altman plot
 
-This code remains unchanged in version 1.3.1
+This code remains unchanged in version 1.3.2
 
 ``` r
 # 7.0 - <Mod Bland-Altman Tab> RENDER MOD-BA ----- ----- -----
@@ -2060,15 +2124,14 @@ This portion of code controls how the SEG graph gets downloaded.
   )
 ```
 
-The portions of this code that were changed in version 1.3.1:
+The portions of this code that were changed in version 1.3.2:
 
 1.  the `png()` function needed additional arguments to ensure a higher
     quality image.
 2.  the `pdf()` function needed additional arguments to produce a pdf
     that would fit on a full page.
 3.  the following portion of code was removed because each downloadable
-    device will resize the text
-automatically.
+    device will resize the text automatically.
 
 <!-- end list -->
 
@@ -2150,15 +2213,14 @@ This is the code for downloading the modified Bland-Altman plot.
   )
 ```
 
-The portions of this code that were changed in version 1.3.1:
+The portions of this code that were changed in version 1.3.2:
 
 1.  the `png()` function needed additional arguments to ensure a higher
     quality image.
 2.  the `pdf()` function needed additional arguments to produce a pdf
     that would fit on a full page.
 3.  the following portion of code was removed because each downloadable
-    device will resize the text
-automatically.
+    device will resize the text automatically.
 
 <!-- end list -->
 

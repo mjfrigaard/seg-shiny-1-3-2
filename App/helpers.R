@@ -4,7 +4,7 @@
 # data files to the shiny app.
 # Authored by and feedback to mjfrigaard@gmail.com
 # MIT License
-# Version: 1.3.1 ----
+# Version: 1,3,2 ----
 # =====================================================================#
 
 options(shiny.maxRequestSize = 30 * 1024^2)
@@ -103,12 +103,8 @@ lkpISORanges <- tibble::tribble(
 # lkpISORanges
 
 # 1.0.0 - DEFINE heatmap inputs ============= ----
-# 1.0.1 - download seg_gaussian_layer_shiny.rds ----- -----
-download.file(url = paste0(github_data_root, 
-                           "seg_gaussian_layer_shiny.rds"), 
-              destfile = "seg_gaussian_layer_shiny.rds")
 
-# 1.0.2 - load rds file -----
+# 1.0.2 - load rds file from App folder -----
 seg_gaussian_layer_shiny <- readr::read_rds("seg_gaussian_layer_shiny.rds")
 
 # 1.0.3 mmol conversion factor ---- -----
