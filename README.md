@@ -5,11 +5,14 @@ Martin Frigaard
 
 # Welcome to the SEG Shiny app project page
 
+***This is not the code for the working app\!***
+
 This page outlines the code used to develop the SEG application. The
 working version is on the Diabetes Technology Society website
-[here](https://www.diabetestechnology.org/seg/). The preview version
-(not necessarily stable) is available
-[here](https://paradigmdatagroup.shinyapps.io/seg-shiny-v-1-3-1/).
+[here](https://www.diabetestechnology.org/seg/).
+
+The preview version (not necessarily stable) is available
+[here](https://paradigmdatagroup.shinyapps.io/seg-shiny-v-1-3-2/).
 
 For questions, issues, or feature requests, please email Martin at
 <support@quesgen.com>.
@@ -78,8 +81,11 @@ uploaded into the Shiny server.
     │   └── shinyapps.io
     │       ├── n3wsandnumb3rs
     │       │   └── seg-shiny-v-1-3-1.dcf
+    │       ├── paradigmdatagroup
+    │       │   └── seg-shiny-v-1-3-2.dcf
     │       └── quesgen
-    │           └── seg-shiny-v-1-3-1.dcf
+    │           ├── seg-shiny-v-1-3-1.dcf
+    │           └── seg-shiny-v-1-3-2.dcf
     ├── seg_gaussian_layer_shiny.rds
     └── www
         ├── QuesGenLogo.png
@@ -434,7 +440,7 @@ VandComp %>% glimpse(78)
 
 These data can be used as an example to re-create the tables.
 
-## Intructions tab code
+## Instructions tab code
 
 The code for the instructions tab is below. This code starts on lines
 225 in the `App.R` file.
@@ -1800,7 +1806,7 @@ gaussian_layer
 ![](README_files/figure-gfm/gaussian_layer-1.png)<!-- -->
 
 In the next layer, I’ll add the color gradient scaling and values, and
-also the cutom labels for each level.
+also the custom labels for each level.
 
 ``` r
 # 6.3 - the seg_gaussian_layer_shiny ---- 
@@ -1868,8 +1874,11 @@ fs::dir_tree("App")
     │   └── shinyapps.io
     │       ├── n3wsandnumb3rs
     │       │   └── seg-shiny-v-1-3-1.dcf
+    │       ├── paradigmdatagroup
+    │       │   └── seg-shiny-v-1-3-2.dcf
     │       └── quesgen
-    │           └── seg-shiny-v-1-3-1.dcf
+    │           ├── seg-shiny-v-1-3-1.dcf
+    │           └── seg-shiny-v-1-3-2.dcf
     ├── seg_gaussian_layer_shiny.rds
     └── www
         ├── QuesGenLogo.png

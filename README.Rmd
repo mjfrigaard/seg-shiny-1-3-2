@@ -35,7 +35,11 @@ library(styler) # cleaner code
 
 # Welcome to the SEG Shiny app project page
 
-This page outlines the code used to develop the SEG application. The working version is on the Diabetes Technology Society website [here](https://www.diabetestechnology.org/seg/). The preview version (not necessarily stable) is available [here](https://paradigmdatagroup.shinyapps.io/seg-shiny-v-1-3-1/).
+***This is not the code for the working app!***
+
+This page outlines the code used to develop the SEG application. The working version is on the Diabetes Technology Society website [here](https://www.diabetestechnology.org/seg/). 
+
+The preview version (not necessarily stable) is available [here](https://paradigmdatagroup.shinyapps.io/seg-shiny-v-1-3-2/).
 
 For questions, issues, or feature requests, please email Martin at support@quesgen.com.
 
@@ -342,7 +346,7 @@ VandComp %>% glimpse(78)
 
 These data can be used as an example to re-create the tables. 
 
-## Intructions tab code
+## Instructions tab code
 
 The code for the instructions tab is below. This code starts on lines 225 in the `App.R` file. 
 
@@ -1718,7 +1722,7 @@ gaussian_layer <- scales_layer +
 gaussian_layer
 ```
 
-In the next layer, I'll add the color gradient scaling and values, and also the cutom labels for each level. 
+In the next layer, I'll add the color gradient scaling and values, and also the custom labels for each level. 
 
 ```{r seg_gaussian_layer_shiny}
 # 6.3 - the seg_gaussian_layer_shiny ---- 
